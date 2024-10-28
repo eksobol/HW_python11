@@ -6,7 +6,7 @@ from selenium import webdriver
 # добавляем фикстуры
 
 @pytest.fixture(scope="function")
-def setup_browser(request):
+def setup_browser():
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
@@ -20,8 +20,11 @@ def setup_browser(request):
     driver = webdriver.Remote(
         command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options)
-
     browser.config.driver = driver
+
+    browser.config.driver_name = "chrome"
+    browser.config.window_height = 1080
+    browser.config.window_width = 1920
 
     yield
 
