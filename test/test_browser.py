@@ -2,7 +2,7 @@ from pages.registration_pages import RegistrationStudent
 import allure
 
 
-def test_registration_student():
+def test_registration_student(setup_browser):
     registration_student = RegistrationStudent()
 
     with allure.step('Открываем форму'):
